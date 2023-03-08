@@ -1,0 +1,26 @@
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
+    str_el = ''
+    list_el = []
+    res = []
+    for el in items:
+        if type(el) is str:
+            str_el += el
+        elif type(el) is int:
+            list_el.append(el)
+    res.append(str_el)
+    res.append(sum(list_el))
+    return res
+
+
+print("Example:")
+print(list(sum_by_types([])))
+
+assert list(sum_by_types([])) == ["", 0]
+assert list(sum_by_types([1, 2, 3])) == ["", 6]
+assert list(sum_by_types(["1", 2, 3])) == ["1", 5]
+assert list(sum_by_types(["1", "2", 3])) == ["12", 3]
+assert list(sum_by_types(["1", "2", "3"])) == ["123", 0]
+assert list(sum_by_types(["size", 12, "in", 45, 0])) == ["sizein", 57]
+
+print("The mission is done! Click 'Check Solution' to earn rewards!")
+
